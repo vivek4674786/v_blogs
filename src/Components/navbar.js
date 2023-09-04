@@ -22,10 +22,13 @@ const Navbar = () => {
                 <Link className="nav-link" to='/about'>About</Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            {!localStorage.getItem('token') ? <form className="d-flex">
+            <Link className="nav-link" to='/login'><button type="button" className="btn btn-primary">Login</button></Link>
+          </form> : <form className="d-flex">
+            
+            <Link to="/profile" ><button className='btn btn-info'>Profile</button></Link>
+            {/* <Link className='btn btn-outline-dark mx-1 btn-light' to="/profile" role="button">Profile</Link>*/}</form>
+          }
           </div>
         </div>
       </nav>

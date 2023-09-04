@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import BlogContext from "./BlogContext";
 
 
@@ -15,22 +15,13 @@ const BlogState = (props) => {
             'Content-Type': 'application/json'
         }
         })
-        const json = await response.json();
-        setBlogs(json);
-        console.log("state-1");
-        console.log(json);
+        setBlogs(await response.json());
         }
         catch(error){
           console.log(error);
         }
       }
-      useEffect(() => {
-        // Fetch blogs when the component mounts
-        fetchBlogs();
-      }, []);
-      console.log("State start---")
-      console.log(Blogs);
-      console.log("State over---")
+      
     return(
         <BlogContext.Provider value={{Blogs, setBlogs, fetchBlogs}}>
             {props.children}
